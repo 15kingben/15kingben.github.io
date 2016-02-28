@@ -1,0 +1,62 @@
+@font-face {
+    font-family:"SFNSDisplay";
+    src: url("SFNSDisplay2.ttf") /* TTF file for CSS3 browsers */
+}
+
+
+html, body {
+
+  font-family: 'SFNSDisplay', sans-serif;
+
+  background:url('Backgrounds/bg.png') no-repeat center center fixed;
+	background-size:cover;
+  background-color: #2A313B;
+  color: white; !important;
+  /*overflow: hidden;*/
+}
+
+.container {
+  position:relative;
+  top: 160px;
+}
+
+.RSSViewer {
+
+
+}
+
+.dateAndTime{
+  position: absolute;
+  text-align: center;
+
+  top: 470px;
+  left: 0;
+  width: 100%;
+
+}
+
+h1 {
+  font-size: 400%;
+}
+
+h2 {
+  font-size: 200%;
+}
+
+a, font{
+  text-decoration: none;
+  color: white;
+
+}
+
+.rss{
+  margin-left: auto;
+  margin-right: auto;
+  top: 200px;
+  background:rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 4px 3px black;
+  height: 150px;
+
+  /*right: auto;*/
+  width: 800px;
+}

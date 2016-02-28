@@ -3,7 +3,7 @@
 var gHours;
 var gMinutes;
 var gDate;
-
+var articles = [];
 
 
 
@@ -12,6 +12,10 @@ var main = function(){
 );
 
 
+
+  var r = Math.floor(Math.random() * 14 + 1);
+  var bgFile = 'Backgrounds/' + r + ".png";
+  //$('body').css('background', 'url(\''+ bgFile +'\') no-repeat center center fixed');
 
 
   var currentTime = new Date();
@@ -85,37 +89,60 @@ var displayDate = function(hours , minutes, date){
 	var m = month[date.getMonth()];
 
 	var s = w + ", " + m + " " + date.getDate();
+  $('.currentDate').html(s);
 
 	if(hours > 12){
-		$('.time').html(s + "<br>" + (  hours - 12) + ':' + minutes + " PM");
+		$('.time').html((  hours - 12) + ':' + minutes + " PM");
 	}else{
 		if(hours == 0){
-			$('.time').html(s + "<br>" + ( 12 )+ ":" + minutes + " AM");
+			$('.time').html(( 12 )+ ":" + minutes + " AM");
 		}else{
-		$('.time').html(s + "<br>" + ( hours )+ ":" + minutes + " AM");}
+		$('.time').html(( hours )+ ":" + minutes + " AM");}
 	}
 
 
 }
 
 var getRSSFeed = function(FEED_URL) {
-  console.log("poop");
 var yql = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D%22https%3A%2F%2Fnews.google.com%2Fnews%3Fcf%3Dall%26hl%3Den%26pz%3D1%26ned%3Dus%26output%3Drss%22&format=json&diagnostics=true&callback="
 $.getJSON(yql, function(res) {
-      console.log(res.query.results);
+      //console.log(res.query.results);
 
-      $('.rss').text(res.query.results.item[0].description);
-      $('.rss1').empty().append(res.query.results.item[1].description);
-      $('.rss2').html(res.query.results.item[2].description);
-
+      articles = res.query.results.item;
+      console.log(articles.length)
+      cycleRSS(0);
+      //$('.rss').html(articles[0].description)
+      //$('.rss1').empty().append(res.query.results.item[1].description);
+      //$('.rss2').html(res.query.results.item[2].description);
+      //changeTheRSSFormat();
       //$.each(res)
   }, "jsonp");
 
 
+}
+
+
+var cycleRSS = function(count){
+  if(count >= articles.length){
+    count = 0;
+  }
+  $('.rss').html(articles[count].description)
+  changeTheRSSFormat();
+  setTimeout(cycleRSS, 13000, count+1);
+}
+
+
+var changeTheRSSFormat = function(){
+  for(var i = 5; i < $('.rss .lh').children().length; i++){
+    $('.rss .lh').children().eq(i).empty();
+    //$('.rss .lh').children().eq(i).remove();
+  }
+
+  $('.rss .lh').children().eq(0).css('font-size',  '120%');
+  $('.rss .lh').children().eq(2).find('>:first-child').find('>:first-child').css('color',  '#DDDDDD');
 
 
 }
-
 
 
 
