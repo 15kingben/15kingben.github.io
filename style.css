@@ -1,6 +1,6 @@
 @font-face {
     font-family:"SFNSDisplay";
-    src: url("SFNSDisplay2.ttf") /* TTF file for CSS3 browsers */
+    src: url("SFNSDisplay.ttf") /* TTF file for CSS3 browsers */
 }
 
 
@@ -29,18 +29,20 @@ html, body {
   position: absolute;
   text-align: center;
 
-  top: 470px;
+  top: 400px;
   left: 0;
   width: 100%;
 
 }
 
 h1 {
-  font-size: 400%;
+  font-size: 600%;
+  font-weight: 500;
 }
 
 h2 {
-  font-size: 200%;
+  font-size: 300%;
+  font-weight: normal;
 }
 
 a, font{
