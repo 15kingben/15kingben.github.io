@@ -4,10 +4,28 @@ var gHours;
 var gMinutes;
 var gDate;
 var articles = [];
-
+var count = 0;
 
 
 var main = function(){
+  $(document).keypress(function(event){
+    if(event.which == 106){
+      count--;
+      if(count < 0){
+        count = articles.length-1;
+      }
+      updateRSS();
+    }
+    if(event.which == 108){
+
+      count++;
+      if(count >= articles.length){
+        count = 0;
+      }
+      updateRSS();
+    }
+
+  });
   getRSSFeed("https://query.yahooapis.com/v1/public/yql?q=select%20title%20from%20rss%20where%20url%3D%22https%3A%2F%2Fnews.google.com%2Fnews%3Fcf%3Dall%26hl%3Den%26pz%3D1%26ned%3Dus%26output%3Drss%22&diagnostics=true"
 );
 
@@ -110,7 +128,7 @@ $.getJSON(yql, function(res) {
 
       articles = res.query.results.item;
       console.log(articles.length)
-      cycleRSS(0);
+      cycleRSS();
       //$('.rss').html(articles[0].description)
       //$('.rss1').empty().append(res.query.results.item[1].description);
       //$('.rss2').html(res.query.results.item[2].description);
@@ -122,15 +140,21 @@ $.getJSON(yql, function(res) {
 }
 
 
-var cycleRSS = function(count){
+var cycleRSS = function(){
+  count++;
   if(count >= articles.length){
     count = 0;
   }
-  $('.rss').html(articles[count].description)
-  changeTheRSSFormat();
-  setTimeout(cycleRSS, 13000, count+1);
+  updateRSS();
+
+  setTimeout(cycleRSS, 13000);
 }
 
+
+var updateRSS = function(){
+  $('.rss').html(articles[count].description);
+  changeTheRSSFormat();
+}
 
 var changeTheRSSFormat = function(){
   for(var i = 5; i < $('.rss .lh').children().length; i++){
