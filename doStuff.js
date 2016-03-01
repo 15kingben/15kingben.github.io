@@ -5,6 +5,7 @@ var gMinutes;
 var gDate;
 var articles = [];
 var count = 0;
+var cycleTimeout;
 
 
 var main = function(){
@@ -15,6 +16,8 @@ var main = function(){
         count = articles.length-1;
       }
       updateRSS();
+      clearTimeout(cycleTimeout);
+      cycleTimeout = setTimeout(cycleRSS, 13000);
     }
     if(event.which == 108){
 
@@ -24,6 +27,8 @@ var main = function(){
       }
       updateRSS();
     }
+    clearTimeout(cycleTimeout);
+    cycleTimeout = setTimeout(cycleRSS, 13000);
 
   });
   getRSSFeed("https://query.yahooapis.com/v1/public/yql?q=select%20title%20from%20rss%20where%20url%3D%22https%3A%2F%2Fnews.google.com%2Fnews%3Fcf%3Dall%26hl%3Den%26pz%3D1%26ned%3Dus%26output%3Drss%22&diagnostics=true"
@@ -147,7 +152,7 @@ var cycleRSS = function(){
   }
   updateRSS();
 
-  setTimeout(cycleRSS, 13000);
+  cycleTimeout = setTimeout(cycleRSS, 13000);
 }
 
 
