@@ -15,8 +15,6 @@ navigator.mediaDevices.getUserMedia(constraints)
   })
   .catch(function(err) { console.log(err.name + ": " + err.message); }); // always check for errors at the end.
 
-
-}
 //
 // if(navigator.webkitGetUserMedia!=null) {
 //
