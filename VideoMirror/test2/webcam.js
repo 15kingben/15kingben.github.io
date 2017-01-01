@@ -13,3 +13,11 @@ if(navigator.webkitGetUserMedia!=null) {
     }
   );
 }
+
+document.querySelector('video').addEventListener('ended',myHandler,false);
+function myHandler(e) {
+    console.log('ended');
+    setTimeout(function(){
+        document.querySelector('video').play();
+    }, 5000);
+}
