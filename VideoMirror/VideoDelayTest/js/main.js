@@ -317,13 +317,6 @@ function onBtnStopClicked(){
 // 	// pauseResBtn.disabled = false;
 // }
 
-
-
-
-
-
-
-
 function log(message){
 	dataElement.innerHTML = dataElement.innerHTML+'<br>'+message ;
 }
