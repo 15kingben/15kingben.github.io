@@ -20,14 +20,14 @@ if(getBrowser() == "Chrome"){
 // var stopBtn = document.querySelector('button#stop');
 
 var videoElement = document.querySelector('video');
-var dataElement = document.querySelector('#data');
+// var dataElement = document.querySelector('#data');
 var downloadLink = document.querySelector('a#downloadLink');
 
 
 
 
 //Ben's stuff
-var videoLength = 5000;
+var videoLength = 8000;
 var videoDelay = 3000;
 var mirrorMode = true;
 var countdownTimer = document.querySelector("h1#countdownTimer");
@@ -57,7 +57,7 @@ var chunks = [];
 var count = 0;
 
 function startRecording(stream) {
-	log('Start recording...');
+	//log('Start recording...');
 	if (typeof MediaRecorder.isTypeSupported == 'function'){
 		/*
 			MediaRecorder.isTypeSupported is a function announced in https://developers.google.com/web/updates/2016/01/mediarecorder and later introduced in the MediaRecorder API spec http://www.w3.org/TR/mediastream-recording/
@@ -69,10 +69,10 @@ function startRecording(stream) {
 		} else if (MediaRecorder.isTypeSupported('video/webm;codecs=vp8')) {
 		  var options = {mimeType: 'video/webm;codecs=vp8'};
 		}
-		log('Using '+options.mimeType);
+		//log('Using '+options.mimeType);
 		mediaRecorder = new MediaRecorder(stream, options);
 	}else{
-		log('Using default codecs for browser');
+	//	log('Using default codecs for browser');
 		mediaRecorder = new MediaRecorder(stream);
 	}
 
@@ -93,20 +93,20 @@ function startRecording(stream) {
 	};
 
 	mediaRecorder.onerror = function(e){
-		log('Error: ' + e);
+		//log('Error: ' + e);
 		console.log('Error: ', e);
 	};
 
 
 	mediaRecorder.onstart = function(){
-		log('Started & state = ' + mediaRecorder.state);
+		//log('Started & state = ' + mediaRecorder.state);
 	};
 
 	mediaRecorder.onstop = function(){
 		if(mirrorMode){
 			return;
 		}
-		log('Stopped  & state = ' + mediaRecorder.state);
+		//log('Stopped  & state = ' + mediaRecorder.state);
 
 		var blob = new Blob(chunks, {type: "video/webm"});
 		chunks = [];
@@ -116,6 +116,7 @@ function startRecording(stream) {
 		downloadLink.href = videoURL;
 		videoElement.src = videoURL;
 
+		$(".downloadHeader").css("display", "block");
 		downloadList.style.display = "block";
 
 		var listNode = document.createElement('li');
@@ -134,7 +135,6 @@ function startRecording(stream) {
 					canvas_elem.width = this.videoWidth;
 					canvas_elem.getContext('2d').drawImage(this, 0, 0);
 					var snapshot = canvas_elem.toDataURL();
-					console.log(snapshot);
 					imgNode.setAttribute("src", snapshot);
 					// Remove elements as they are no longer needed
 					$video.remove();
@@ -165,15 +165,15 @@ function startRecording(stream) {
 	};
 
 	mediaRecorder.onpause = function(){
-		log('Paused & state = ' + mediaRecorder.state);
+		//log('Paused & state = ' + mediaRecorder.state);
 	}
 
 	mediaRecorder.onresume = function(){
-		log('Resumed  & state = ' + mediaRecorder.state);
+		//log('Resumed  & state = ' + mediaRecorder.state);
 	}
 
 	mediaRecorder.onwarning = function(e){
-		log('Warning: ' + e);
+	//	log('Warning: ' + e);
 	};
 }
 
@@ -266,6 +266,9 @@ function onBtnVideoModeClicked(){
 	   videoModeButton.className.replace
 	      ( /(?:^|\s)greyedOut(?!\S)/g , '' );
 
+		$(".sliders").css("display", "block");
+		updateSliders();
+
 	if(!mirrorModeButton.className.match(/(?:^|\s)greyedOut(?!\S)/) ){
 				mirrorModeButton.className += " greyedOut";
 				mirrorMode = false;
@@ -316,9 +319,9 @@ function onBtnStopClicked(){
 // 	// pauseResBtn.disabled = false;
 // }
 
-function log(message){
-	dataElement.innerHTML = dataElement.innerHTML+'<br>'+message ;
-}
+// function log(message){
+// 	dataElement.innerHTML = dataElement.innerHTML+'<br>'+message ;
+// }
 
 //browser ID
 function getBrowser(){
@@ -383,3 +386,27 @@ function getBrowser(){
 
 	return browserName;
 }
+
+function updateSliders(){
+	updateVideoLength();
+	updateDelayLength();
+}
+
+function updateVideoLength(){
+	$("p#videoLengthTF").html($("input#videoLengthSlider").val() + " seconds");
+	videoLength = $("input#videoLengthSlider").val() * 1000;
+}
+
+function updateDelayLength(){
+	$("p#videoDelayTF").html($("input#videoDelaySlider").val() + " seconds");
+	videoDelay = $("input#videoDelaySlider").val() * 1000;
+}
+
+$(document).ready(
+	function(){
+		$("input#videoLengthSlider").on('change', updateVideoLength);
+		$("input#videoDelaySlider").on('change', updateDelayLength);
+		$("input#videoLengthSlider").val(8);
+		$("input#videoDelaySlider").val(3);
+	}
+);

@@ -74,6 +74,44 @@ ol#downloadList canvas, ol#downloadList video {
   z-index: -1;
 }
 
+.downloadHeader {
+  margin-top: 50px;
+  display: none;
+}
+
+.sliders {
+  width:100%;
+}
+
+.sliders {
+  display: none;
+}
+
+input#videoLengthSlider, input#videoDelaySlider {
+  vertical-align: middle;
+  margin-right: 7px;
+}
+
+h4.sliderHeader {
+  margin-bottom: 12px;
+}
+
+.delaySliderBox, .videoSliderBox {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 45%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+p#videoDelayTF, p#videoLengthTF {
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  /*width: 40px;*/
+}
 /**************************************/
 body {
   font-family: sans-serif;

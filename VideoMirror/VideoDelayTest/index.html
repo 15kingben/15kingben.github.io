@@ -36,12 +36,24 @@ p#data {
 	<button id="pauseRes"   onclick="onPauseResumeClicked()" disabled>Pause</button>
 	<button id="stop"  onclick="onBtnStopClicked()" disabled>Stop</button> -->
  </div>
+
+<div class="sliders">
+	<div class="videoSliderBox">
+		<h4 class="sliderHeader">Length of Video</h4>
+		<input id="videoLengthSlider" type="range" min="1" max="60"/>
+		<p id="videoLengthTF"></p>
+	</div>
+	<div class="delaySliderBox">
+		<h4 class="sliderHeader">Delay between Videos</h4>
+ 		<input id="videoDelaySlider" type="range" min="0" max="10"/>
+		<p id="videoDelayTF"></p>
+	</div>
+</div>
+ <h1 class="downloadHeader">Download Clips</h1>
  <ol id="downloadList">
-
-
  </ol>
 <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
-<p id="data"></p>
+<!-- <p id="data"></p> -->
 <script src="js/main.js"></script>
 <!-- <h2>Works on:</h2>
 <p><ul><li>Firefox 30 and up</li><li>Chrome 47,48 (video only, enable <em>experimental Web Platform features</em> at  <a href="chrome://flags/#enable-experimental-web-platform-features">chrome://flags</a>)</li><li>Chrome 49+</li></ul></p>
