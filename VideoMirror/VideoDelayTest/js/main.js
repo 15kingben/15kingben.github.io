@@ -15,17 +15,15 @@ if(getBrowser() == "Chrome"){
 	var videoConstraints = {audio: true,video: {  width: { min: 640, ideal: 640, max: 640 },  height: { min: 480, ideal: 480, max: 480 }}}; //Firefox
 }
 
-var recBtn = document.querySelector('button#rec');
-var pauseResBtn = document.querySelector('button#pauseRes');
-var stopBtn = document.querySelector('button#stop');
+// var recBtn = document.querySelector('button#rec');
+// var pauseResBtn = document.querySelector('button#pauseRes');
+// var stopBtn = document.querySelector('button#stop');
 
 var videoElement = document.querySelector('video');
 var dataElement = document.querySelector('#data');
 var downloadLink = document.querySelector('a#downloadLink');
 
-var mirrorModeButton = document.querySelector('button#mirrorMode');
-var videoModeButton = document.querySelector('button#videoMode');
-videoElement.controls = false;
+
 
 
 //Ben's stuff
@@ -35,6 +33,10 @@ var mirrorMode = true;
 var countdownTimer = document.querySelector("h1#countdownTimer");
 var stopInQueue;
 var downloadList = document.querySelector("ol#downloadList");
+var mirrorModeButton = document.querySelector('button#mirrorMode');
+var videoModeButton = document.querySelector('button#videoMode');
+videoElement.controls = false;
+
 
 window.onload = onBtnMirrorModeClicked;
 
@@ -294,9 +296,9 @@ function onBtnStopClicked(){
 	mediaRecorder.stop();
 	videoElement.controls = true;
 
-	recBtn.disabled = false;
-	pauseResBtn.disabled = true;
-	stopBtn.disabled = true;
+	// recBtn.disabled = false;
+	// pauseResBtn.disabled = true;
+	// stopBtn.disabled = true;
 }
 
 function onPauseResumeClicked(){
@@ -304,15 +306,15 @@ function onPauseResumeClicked(){
 		console.log("pause");
 		pauseResBtn.textContent = "Resume";
 		mediaRecorder.pause();
-		stopBtn.disabled = true;
+		// stopBtn.disabled = true;
 	}else{
 		console.log("resume");
 		pauseResBtn.textContent = "Pause";
 		mediaRecorder.resume();
-		stopBtn.disabled = false;
+		// stopBtn.disabled = false;
 	}
-	recBtn.disabled = true;
-	pauseResBtn.disabled = false;
+	// recBtn.disabled = true;
+	// pauseResBtn.disabled = false;
 }
 
 
