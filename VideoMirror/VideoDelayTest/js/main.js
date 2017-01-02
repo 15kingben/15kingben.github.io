@@ -26,6 +26,8 @@ var mirrorMode = true;
 var countdownTimer = document.querySelector("h1#countdownTimer");
 var stopInQueue;
 var resetInQueue;
+var countInQueue;
+var recInQueue;
 var downloadList = document.querySelector("ol#downloadList");
 var mirrorModeButton = document.querySelector('button#mirrorMode');
 var videoModeButton = document.querySelector('button#videoMode');
@@ -196,7 +198,7 @@ function videoResetting(){
 	//tell the user that were restarting
 	countdownTimer.style.display = "flex";
 	countdownDelay(videoDelay + 1000 - 100);
-	setTimeout(onBtnRecordClicked, videoDelay);
+	recInQueue = setTimeout(onBtnRecordClicked, videoDelay);
 }
 
 
@@ -210,7 +212,7 @@ function countdownDelay(timeLeft){
 		return;
 	}
 	countdownTimer.innerHTML = Math.ceil(timeLeft/1000.0);
-	setTimeout(countdownDelay.bind(null, timeLeft), 1000);
+	countInQueue = setTimeout(countdownDelay.bind(null, timeLeft), 1000);
 }
 
 
@@ -225,8 +227,7 @@ function onBtnMirrorModeClicked(){
 		videoModeButton.className += " greyedOut";
 		mirrorMode = true;
 		//if(stopInQueue != null){
-			clearTimeout(stopInQueue);
-			clearTimeout(resetInQueue);
+		clearEvents();
 
 		enableMirroring();
 	}
@@ -389,11 +390,22 @@ function updateSliders(){
 function updateVideoLength(){
 	$("p#videoLengthTF").html($("input#videoLengthSlider").val() + " seconds");
 	videoLength = $("input#videoLengthSlider").val() * 1000;
+	clearEvents();
+	videoResetting();
 }
 
 function updateDelayLength(){
 	$("p#videoDelayTF").html($("input#videoDelaySlider").val() + " seconds");
 	videoDelay = $("input#videoDelaySlider").val() * 1000;
+	clearEvents();
+	videoResetting();
+}
+
+function clearEvents(){
+	clearTimeout(stopInQueue);
+	clearTimeout(resetInQueue);
+	clearTimeout(countInQueue);
+	clearTimeout(recInQueue);
 }
 
 $(document).ready(
