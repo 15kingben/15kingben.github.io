@@ -165,7 +165,7 @@ function onBtnMirrorModeClicked(){
 
 		if(mediaRecorder != null){
 			mirrorMode = true;
-			if(mediaRecorder.state != inactive){
+			if(mediaRecorder.state != "inactive"){
 				mediaRecorder.stop();
 			}
 		}
