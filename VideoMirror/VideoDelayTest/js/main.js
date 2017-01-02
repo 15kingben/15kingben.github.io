@@ -8,9 +8,11 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 
 
 if(getBrowser() == "Chrome"){
-	var constraints = {"audio": true, "video": {  "mandatory": {  "minWidth": 640,  "maxWidth": 640, "minHeight": 480,"maxHeight": 480 }, "optional": [] } };//Chrome
+	var mirrorConstraints = {"audio": false, "video": {  "mandatory": {  "minWidth": 640,  "maxWidth": 640, "minHeight": 480,"maxHeight": 480 }, "optional": [] } };//Chrome
+	var videoConstraints  = {"audio": true, "video": {  "mandatory": {  "minWidth": 640,  "maxWidth": 640, "minHeight": 480,"maxHeight": 480 }, "optional": [] } };//Chrome
 }else if(getBrowser() == "Firefox"){
-	var constraints = {audio: true,video: {  width: { min: 640, ideal: 640, max: 640 },  height: { min: 480, ideal: 480, max: 480 }}}; //Firefox
+	var mirrorConstraints = {audio: false,video: {  width: { min: 640, ideal: 640, max: 640 },  height: { min: 480, ideal: 480, max: 480 }}}; //Firefox
+	var videoConstraints = {audio: true,video: {  width: { min: 640, ideal: 640, max: 640 },  height: { min: 480, ideal: 480, max: 480 }}}; //Firefox
 }
 
 var recBtn = document.querySelector('button#rec');
@@ -32,6 +34,7 @@ var videoDelay = 3000;
 var mirrorMode = true;
 var countdownTimer = document.querySelector("h1#countdownTimer");
 var stopInQueue;
+var downloadList = document.querySelector("ol#downloadList");
 
 window.onload = onBtnMirrorModeClicked;
 
@@ -110,13 +113,54 @@ function startRecording(stream) {
 
 		downloadLink.href = videoURL;
 		videoElement.src = videoURL;
-		downloadLink.innerHTML = 'Download video file';
+
+		downloadList.style.display = "block";
+
+		var listNode = document.createElement('li');
+		var imgNode = document.createElement('img');
+		listNode.appendChild(imgNode);
+		//listNode.appendChild(document.createTextNode())
+
+		var canvas_elem = $( '<canvas class=snapshot_generator></canvas>' ).appendTo(document.body)[0];
+		var $video = $( '<video muted class=snapshot_generator></video>' ).appendTo(document.body);
+
+		var step_2_events_fired = 0;
+		$video.one('loadedmetadata loadeddata suspend', function() {
+    	if (++step_2_events_fired == 3) {
+				$video.one('seeked', function() {
+					canvas_elem.height = this.videoHeight;
+					canvas_elem.width = this.videoWidth;
+					canvas_elem.getContext('2d').drawImage(this, 0, 0);
+					var snapshot = canvas_elem.toDataURL();
+					console.log(snapshot);
+					imgNode.setAttribute("src", snapshot);
+					// Remove elements as they are no longer needed
+					$video.remove();
+					$(canvas_elem).remove();
+				}).prop('currentTime', videoLength/1000/2);
+    	}
+		}).prop('src', videoURL);
+
+
+
 
 		var rand =  Math.floor((Math.random() * 10000000));
 		var name  = "video_"+rand+".webm" ;
 
-		downloadLink.setAttribute( "download", name);
-		downloadLink.setAttribute( "name", name);
+		var lengthNode = document.createTextNode("  Length: " + videoLength/1000 + " seconds");
+		lengthNode.setAttribute("style", "{color:#333}");
+		//listNode.appendChild(lengthNode);
+
+		var linkNode = document.createElement("a");
+		linkNode.appendChild(document.createTextNode('Download'));
+		linkNode.setAttribute("href", videoURL);
+		linkNode.setAttribute( "download", name);
+		linkNode.setAttribute( "name", name);
+
+
+
+		listNode.insertBefore(linkNode, lengthNode);
+		downloadList.appendChild(listNode);
 	};
 
 	mediaRecorder.onpause = function(){
@@ -142,7 +186,7 @@ function videoStop(){
 	if(mirrorMode){
 		return;
 	}
-	if(mediaRecorder.state != "inactive"){
+	if(mediaRecorder != null && mediaRecorder.state != "inactive"){
 		mediaRecorder.stop();
 	}
 
@@ -186,7 +230,9 @@ function onBtnMirrorModeClicked(){
 		countdownTimer.style.display = "none";
 		videoModeButton.className += " greyedOut";
 		mirrorMode = true;
-		clearTimeout(stopInQueue);
+		if(stopInQueue != null){
+			clearTimeout(stopInQueue);
+		}
 		enableMirroring();
 	}
 }
@@ -201,7 +247,7 @@ function enableMirroring(){
 	if (typeof MediaRecorder === 'undefined' || !navigator.getUserMedia) {
 	 alert('MediaRecorder not supported on your browser, use Firefox 30 or Chrome 49 instead.');
 	}else {
- 		navigator.getUserMedia(constraints, mirrorRecording, errorCallback);
+ 		navigator.getUserMedia(mirrorConstraints, mirrorRecording, errorCallback);
 	}
 }
 
@@ -235,7 +281,7 @@ function onBtnRecordClicked (){
 	 if (typeof MediaRecorder === 'undefined' || !navigator.getUserMedia) {
 		alert('MediaRecorder not supported on your browser, use Firefox 30 or Chrome 49 instead.');
 	}else {
-		navigator.getUserMedia(constraints, startRecording, errorCallback);
+		navigator.getUserMedia(videoConstraints, startRecording, errorCallback);
 		recBtn.disabled = true;
 		pauseResBtn.disabled = false;
 		stopBtn.disabled = false;

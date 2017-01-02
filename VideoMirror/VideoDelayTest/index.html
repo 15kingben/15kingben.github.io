@@ -8,6 +8,7 @@
 <base target="_blank">
 <title>Display Video from the Webcam</title>
 <link rel="stylesheet" href="css/main.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <style>
 a#downloadLink {
 	display: block;
@@ -35,6 +36,10 @@ p#data {
 	<button id="pauseRes"   onclick="onPauseResumeClicked()" disabled>Pause</button>
 	<button id="stop"  onclick="onBtnStopClicked()" disabled>Stop</button>
  </div>
+ <ol id="downloadList">
+
+
+ </ol>
 <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
 <p id="data"></p>
 <script src="js/main.js"></script>
