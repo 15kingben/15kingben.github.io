@@ -21,6 +21,9 @@ var videoElement = document.querySelector('video');
 var dataElement = document.querySelector('#data');
 var downloadLink = document.querySelector('a#downloadLink');
 
+var mirrorModeButton = document.querySelector('button#mirrorMode');
+var videoModeButton = document.querySelector('button#videoMode');
+
 videoElement.controls = false;
 
 //Ben's stuff
@@ -138,6 +141,35 @@ function videoResetting(){
 	setTimeout(onBtnRecordClicked, videoDelay);
 }
 
+
+
+
+
+function onBtnMirrorModeClicked(){
+	mirrorModeButton.className =
+	   mirrorModeButton.className.replace
+	      ( /(?:^|\s)inActive(?!\S)/g , '' );
+
+	if(!videoModeButton.className.match(/(?:^|\s)inActive(?!\S)/) ){
+		videoModeButton.className += " inActive";
+
+		mediaRecorder.stop();
+
+		var url = window.URL || window.webkitURL;
+		videoElement.src = url ? url.createObjectURL(stream) : stream;
+		videoElement.play();
+	}
+}
+
+function onBtnVideoModeClicked(){
+	videoModeButton.className =
+	   videoModeButton.className.replace
+	      ( /(?:^|\s)inActive(?!\S)/g , '' );
+
+	if(!mirrorModeButton.className.match(/(?:^|\s)inActive(?!\S)/) ){
+				mirrorModeButton.className += " inActive";
+		}
+}
 
 function onBtnRecordClicked (){
 	 if (typeof MediaRecorder === 'undefined' || !navigator.getUserMedia) {

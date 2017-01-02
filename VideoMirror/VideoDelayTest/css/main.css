@@ -1,3 +1,30 @@
+.mode-button {
+  width: 40%;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+    background-color: #008cba; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px 32px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.mode-button:hover {
+  background-color: #007399;
+}
+
+button.inActive {
+    opacity: 0.6;
+}
+
+/**************************************/
 body {
   font-family: sans-serif;
   font-weight: 300;
@@ -222,7 +249,7 @@ strong {
 
 video {
   background: #222;
-   margin: 10px auto; 
+   margin: 10px auto;
   width: 640px;
   height:480px;
 }
