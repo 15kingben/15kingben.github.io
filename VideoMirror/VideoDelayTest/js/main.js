@@ -116,6 +116,7 @@ function startRecording(stream) {
 
 		downloadLink.setAttribute( "download", name);
 		downloadLink.setAttribute( "name", name);
+		enableMirroring();
 	};
 
 	mediaRecorder.onpause = function(){
@@ -179,19 +180,23 @@ function onBtnMirrorModeClicked(){
 
 	if(!videoModeButton.className.match(/(?:^|\s)greyedOut(?!\S)/) ){
 		videoModeButton.className += " greyedOut";
+		mirrorMode = true;
 
-		if(mediaRecorder != null){
-			mirrorMode = true;
-			if(mediaRecorder.state != "inactive"){
-				mediaRecorder.stop();
-			}
-		}
+		enableMirroring();
+	}
+}
 
-		if (typeof MediaRecorder === 'undefined' || !navigator.getUserMedia) {
-		 alert('MediaRecorder not supported on your browser, use Firefox 30 or Chrome 49 instead.');
-		}else {
-		 navigator.getUserMedia(constraints, mirrorRecording, errorCallback);
+function enableMirroring(){
+	if(mediaRecorder != null){
+		if(mediaRecorder.state != "inactive"){
+			mediaRecorder.stop();
 		}
+	}
+
+	if (typeof MediaRecorder === 'undefined' || !navigator.getUserMedia) {
+	 alert('MediaRecorder not supported on your browser, use Firefox 30 or Chrome 49 instead.');
+	}else {
+ 		navigator.getUserMedia(constraints, mirrorRecording, errorCallback);
 	}
 }
 
