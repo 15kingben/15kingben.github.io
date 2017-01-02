@@ -29,6 +29,7 @@ var videoDelay = 3000;
 var mirrorMode = true;
 var countdownTimer = document.querySelector("h1#countdownTimer");
 var stopInQueue;
+var resetInQueue;
 var downloadList = document.querySelector("ol#downloadList");
 var mirrorModeButton = document.querySelector('button#mirrorMode');
 var videoModeButton = document.querySelector('button#videoMode');
@@ -188,7 +189,7 @@ function videoStop(){
 		mediaRecorder.stop();
 	}
 
-	setTimeout(videoResetting, videoLength);
+	resetInQueue = setTimeout(videoResetting, videoLength);
 }
 
 function videoResetting(){
@@ -228,9 +229,10 @@ function onBtnMirrorModeClicked(){
 		countdownTimer.style.display = "none";
 		videoModeButton.className += " greyedOut";
 		mirrorMode = true;
-		if(stopInQueue != null){
+		//if(stopInQueue != null){
 			clearTimeout(stopInQueue);
-		}
+			clearTimeout(resetInQueue);
+
 		enableMirroring();
 	}
 }
