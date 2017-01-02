@@ -116,7 +116,6 @@ function startRecording(stream) {
 
 		downloadLink.setAttribute( "download", name);
 		downloadLink.setAttribute( "name", name);
-		enableMirroring();
 	};
 
 	mediaRecorder.onpause = function(){
@@ -151,6 +150,8 @@ function videoResetting(){
 	if(mirrorMode){
 		return;
 	}
+	enableMirroring();
+
 	//tell the user that were restarting
 	countdownTimer.style.display = "flex";
 	countdownDelay(videoDelay + 1000 - 100);
@@ -179,6 +180,7 @@ function onBtnMirrorModeClicked(){
 	      ( /(?:^|\s)greyedOut(?!\S)/g , '' );
 
 	if(!videoModeButton.className.match(/(?:^|\s)greyedOut(?!\S)/) ){
+		countdownTimer.style.display = "none";
 		videoModeButton.className += " greyedOut";
 		mirrorMode = true;
 
