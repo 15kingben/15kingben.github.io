@@ -160,7 +160,6 @@ function startRecording(stream) {
 		linkNode.setAttribute( "name", name);
 
 
-
 		listNode.appendChild(linkNode);
 		downloadList.appendChild(listNode);
 	};
