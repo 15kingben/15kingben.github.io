@@ -29,7 +29,7 @@ videoElement.controls = false;
 //Ben's stuff
 var videoLength = 5000;
 var videoDelay = 3000;
-var hardStop = false;
+var mirrorMode = false;
 
 
 
@@ -94,7 +94,7 @@ function startRecording(stream) {
 	};
 
 	mediaRecorder.onstop = function(){
-		if(hardStop){
+		if(mirrorMode){
 			return;
 		}
 		log('Stopped  & state = ' + mediaRecorder.state);
@@ -158,14 +158,27 @@ function onBtnMirrorModeClicked(){
 		videoModeButton.className += " greyedOut";
 
 		if(mediaRecorder != null){
-			hardStop = true;
-			mediaRecorder.stop();
+			mirrorMode = true;
+			if(mediaRecorder.state != inActive){
+				mediaRecorder.stop();
+			}
 		}
 
-		var url = window.URL || window.webkitURL;
-		videoElement.src = url ? url.createObjectURL(stream) : stream;
-		videoElement.play();
+		if (typeof MediaRecorder === 'undefined' || !navigator.getUserMedia) {
+		 alert('MediaRecorder not supported on your browser, use Firefox 30 or Chrome 49 instead.');
+		}else {
+		 navigator.getUserMedia(constraints, mirrorRecording, errorCallback);
+		}
 	}
+}
+
+function mirrorRecording(stream){
+	var url = window.URL || window.webkitURL;
+	videoElement.src = window.webkitURL.createObjectURL(stream);
+	// video.onloadedmetadata = function(e){
+	//     video.play();
+	// };
+	videoElement.play();
 }
 
 function onBtnVideoModeClicked(){
