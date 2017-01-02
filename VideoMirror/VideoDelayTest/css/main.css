@@ -30,6 +30,10 @@ transform: rotateY(180deg);
 -moz-transform:rotateY(180deg); /* Firefox */
 }
 
+h1#countdownTimer {
+  display: none;
+}
+
 /**************************************/
 body {
   font-family: sans-serif;

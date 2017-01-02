@@ -26,7 +26,11 @@ p#data {
 	<button id="mirrorMode" class="mode-button" onclick="onBtnMirrorModeClicked()">Mirror</button>
 	<button id="videoMode" class="mode-button" onclick="onBtnVideoModeClicked()">Video</button>
 
-	<video controls autoplay></video><br>
+	<div id="video-box">
+		<h1 id="countdownTimer"></h1>
+		<video controls autoplay></video><br>
+	</div>
+
 	<button id="rec" onclick="onBtnRecordClicked()">Record</button>
 	<button id="pauseRes"   onclick="onPauseResumeClicked()" disabled>Pause</button>
 	<button id="stop"  onclick="onBtnStopClicked()" disabled>Stop</button>

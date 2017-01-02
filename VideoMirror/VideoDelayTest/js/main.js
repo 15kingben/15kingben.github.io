@@ -23,13 +23,16 @@ var downloadLink = document.querySelector('a#downloadLink');
 
 var mirrorModeButton = document.querySelector('button#mirrorMode');
 var videoModeButton = document.querySelector('button#videoMode');
-
 videoElement.controls = false;
 
 //Ben's stuff
 var videoLength = 5000;
 var videoDelay = 3000;
-var mirrorMode = false;
+var mirrorMode = true;
+var countdownTimer = document.querySelector("h1#countdownTimer");
+
+
+window.onload = onBtnMirrorModeClicked;
 
 
 
@@ -148,10 +151,26 @@ function videoResetting(){
 		return;
 	}
 	//tell the user that were restarting
+	countdownTimer.style.display = "block";
 	setTimeout(onBtnRecordClicked, videoDelay);
 }
 
 
+
+function countdownDelay(timeLeft){
+	if(mediaRecorder != null && mediaRecorder.state != "inactive"){
+		return;
+	}
+	timeLeft -= 1000;
+	if(timeLeft <=0 ){
+		return;
+	}
+	countdownTimer.innerHTML = ceil(timeLeft/1000.0);
+
+
+
+	setTimeout(countdownDelay.bind(null, videoDelay), 1000);
+}
 
 
 
@@ -195,7 +214,7 @@ function onBtnVideoModeClicked(){
 	if(!mirrorModeButton.className.match(/(?:^|\s)greyedOut(?!\S)/) ){
 				mirrorModeButton.className += " greyedOut";
 				mirrorMode = false;
-				onBtnRecordClicked();
+				videoResetting();
 		}
 }
 
@@ -203,6 +222,8 @@ function onBtnRecordClicked (){
 	if(mirrorMode){
 		return;
 	}
+	countdownTimer.style.display = "none";
+
 	 if (typeof MediaRecorder === 'undefined' || !navigator.getUserMedia) {
 		alert('MediaRecorder not supported on your browser, use Firefox 30 or Chrome 49 instead.');
 	}else {
