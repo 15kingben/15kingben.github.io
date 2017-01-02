@@ -25,12 +25,13 @@ var mirrorModeButton = document.querySelector('button#mirrorMode');
 var videoModeButton = document.querySelector('button#videoMode');
 videoElement.controls = false;
 
+
 //Ben's stuff
 var videoLength = 5000;
 var videoDelay = 3000;
 var mirrorMode = true;
 var countdownTimer = document.querySelector("h1#countdownTimer");
-
+var stopInQueue;
 
 window.onload = onBtnMirrorModeClicked;
 
@@ -141,7 +142,9 @@ function videoStop(){
 	if(mirrorMode){
 		return;
 	}
-	mediaRecorder.stop();
+	if(mediaRecorder.state != "inactive"){
+		mediaRecorder.stop();
+	}
 
 	setTimeout(videoResetting, videoLength);
 }
@@ -183,7 +186,7 @@ function onBtnMirrorModeClicked(){
 		countdownTimer.style.display = "none";
 		videoModeButton.className += " greyedOut";
 		mirrorMode = true;
-
+		clearTimeout(stopInQueue);
 		enableMirroring();
 	}
 }
@@ -237,7 +240,7 @@ function onBtnRecordClicked (){
 		pauseResBtn.disabled = false;
 		stopBtn.disabled = false;
 		////
-		setTimeout(videoStop, videoLength);
+		stopInQueue = setTimeout(videoStop, videoLength);
 	}
 }
 
