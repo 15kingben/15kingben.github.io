@@ -149,8 +149,8 @@ function startRecording(stream) {
 		var rand =  Math.floor((Math.random() * 10000000));
 		var name  = "video_"+rand+".webm" ;
 
-		var lengthNode = document.createTextNode("  Length: " + videoLength/1000 + " seconds");
-		lengthNode.setAttribute("style", "{color:#333}");
+		// var lengthNode = document.createTextNode("  Length: " + videoLength/1000 + " seconds");
+		// lengthNode.setAttribute("style", "{color:#333}");
 		//listNode.appendChild(lengthNode);
 
 		var linkNode = document.createElement("a");
@@ -161,7 +161,7 @@ function startRecording(stream) {
 
 
 
-		listNode.insertBefore(linkNode, lengthNode);
+		listNode.appendChild(linkNode);
 		downloadList.appendChild(listNode);
 	};
 
