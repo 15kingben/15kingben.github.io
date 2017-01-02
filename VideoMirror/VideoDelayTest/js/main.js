@@ -194,6 +194,8 @@ function onBtnVideoModeClicked(){
 
 	if(!mirrorModeButton.className.match(/(?:^|\s)greyedOut(?!\S)/) ){
 				mirrorModeButton.className += " greyedOut";
+				mirrorMode = false;
+				onBtnRecordClicked();
 		}
 }
 
