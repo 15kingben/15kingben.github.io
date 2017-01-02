@@ -76,7 +76,7 @@ function startRecording(stream) {
 		mediaRecorder = new MediaRecorder(stream);
 	}
 
-	pauseResBtn.textContent = "Pause";
+	// pauseResBtn.textContent = "Pause";
 
 	mediaRecorder.start(10);
 
@@ -284,10 +284,10 @@ function onBtnRecordClicked (){
 		alert('MediaRecorder not supported on your browser, use Firefox 30 or Chrome 49 instead.');
 	}else {
 		navigator.getUserMedia(videoConstraints, startRecording, errorCallback);
-		recBtn.disabled = true;
-		pauseResBtn.disabled = false;
-		stopBtn.disabled = false;
-		////
+		// recBtn.disabled = true;
+		// pauseResBtn.disabled = false;
+		// stopBtn.disabled = false;
+		// ////
 		stopInQueue = setTimeout(videoStop, videoLength);
 	}
 }
@@ -301,21 +301,21 @@ function onBtnStopClicked(){
 	// stopBtn.disabled = true;
 }
 
-function onPauseResumeClicked(){
-	if(pauseResBtn.textContent === "Pause"){
-		console.log("pause");
-		pauseResBtn.textContent = "Resume";
-		mediaRecorder.pause();
-		// stopBtn.disabled = true;
-	}else{
-		console.log("resume");
-		pauseResBtn.textContent = "Pause";
-		mediaRecorder.resume();
-		// stopBtn.disabled = false;
-	}
-	// recBtn.disabled = true;
-	// pauseResBtn.disabled = false;
-}
+// function onPauseResumeClicked(){
+// 	if(pauseResBtn.textContent === "Pause"){
+// 		console.log("pause");
+// 		pauseResBtn.textContent = "Resume";
+// 		mediaRecorder.pause();
+// 		// stopBtn.disabled = true;
+// 	}else{
+// 		console.log("resume");
+// 		pauseResBtn.textContent = "Pause";
+// 		mediaRecorder.resume();
+// 		// stopBtn.disabled = false;
+// 	}
+// 	// recBtn.disabled = true;
+// 	// pauseResBtn.disabled = false;
+// }
 
 
 
