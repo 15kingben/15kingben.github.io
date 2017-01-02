@@ -23,9 +23,6 @@ var videoElement = document.querySelector('video');
 // var dataElement = document.querySelector('#data');
 var downloadLink = document.querySelector('a#downloadLink');
 
-
-
-
 //Ben's stuff
 var videoLength = 8000;
 var videoDelay = 3000;
