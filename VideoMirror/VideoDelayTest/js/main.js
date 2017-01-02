@@ -135,12 +135,18 @@ function startRecording(stream) {
 //}
 
 function videoStop(){
+	if(mirrorMode){
+		return;
+	}
 	mediaRecorder.stop();
 
 	setTimeout(videoResetting, videoLength);
 }
 
 function videoResetting(){
+	if(mirrorMode){
+		return;
+	}
 	//tell the user that were restarting
 	setTimeout(onBtnRecordClicked, videoDelay);
 }
@@ -159,7 +165,7 @@ function onBtnMirrorModeClicked(){
 
 		if(mediaRecorder != null){
 			mirrorMode = true;
-			if(mediaRecorder.state != inActive){
+			if(mediaRecorder.state != "inActive"){
 				mediaRecorder.stop();
 			}
 		}
@@ -192,6 +198,9 @@ function onBtnVideoModeClicked(){
 }
 
 function onBtnRecordClicked (){
+	if(mirrorMode){
+		return;
+	}
 	 if (typeof MediaRecorder === 'undefined' || !navigator.getUserMedia) {
 		alert('MediaRecorder not supported on your browser, use Firefox 30 or Chrome 49 instead.');
 	}else {
