@@ -20,7 +20,7 @@
   background-color: #007399;
 }
 
-button.inActive {
+button.greyedOut {
     opacity: 0.6;
 }
 

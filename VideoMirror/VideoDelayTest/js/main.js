@@ -148,10 +148,10 @@ function videoResetting(){
 function onBtnMirrorModeClicked(){
 	mirrorModeButton.className =
 	   mirrorModeButton.className.replace
-	      ( /(?:^|\s)inActive(?!\S)/g , '' );
+	      ( /(?:^|\s)greyedOut(?!\S)/g , '' );
 
-	if(!videoModeButton.className.match(/(?:^|\s)inActive(?!\S)/) ){
-		videoModeButton.className += " inActive";
+	if(!videoModeButton.className.match(/(?:^|\s)greyedOut(?!\S)/) ){
+		videoModeButton.className += " greyedOut";
 
 		mediaRecorder.stop();
 
@@ -164,10 +164,10 @@ function onBtnMirrorModeClicked(){
 function onBtnVideoModeClicked(){
 	videoModeButton.className =
 	   videoModeButton.className.replace
-	      ( /(?:^|\s)inActive(?!\S)/g , '' );
+	      ( /(?:^|\s)greyedOut(?!\S)/g , '' );
 
-	if(!mirrorModeButton.className.match(/(?:^|\s)inActive(?!\S)/) ){
-				mirrorModeButton.className += " inActive";
+	if(!mirrorModeButton.className.match(/(?:^|\s)greyedOut(?!\S)/) ){
+				mirrorModeButton.className += " greyedOut";
 		}
 }
 
