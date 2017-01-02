@@ -15,10 +15,6 @@ if(getBrowser() == "Chrome"){
 	var videoConstraints = {audio: true,video: {  width: { min: 640, ideal: 640, max: 640 },  height: { min: 480, ideal: 480, max: 480 }}}; //Firefox
 }
 
-// var recBtn = document.querySelector('button#rec');
-// var pauseResBtn = document.querySelector('button#pauseRes');
-// var stopBtn = document.querySelector('button#stop');
-
 var videoElement = document.querySelector('video');
 // var dataElement = document.querySelector('#data');
 var downloadLink = document.querySelector('a#downloadLink');
@@ -94,7 +90,6 @@ function startRecording(stream) {
 		//log('Error: ' + e);
 		console.log('Error: ', e);
 	};
-
 
 	mediaRecorder.onstart = function(){
 		//log('Started & state = ' + mediaRecorder.state);
