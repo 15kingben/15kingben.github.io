@@ -151,7 +151,8 @@ function videoResetting(){
 		return;
 	}
 	//tell the user that were restarting
-	countdownTimer.style.display = "block";
+	countdownTimer.style.display = "flex";
+	countdownDelay(videoDelay + 1000 - 100);
 	setTimeout(onBtnRecordClicked, videoDelay);
 }
 
@@ -165,11 +166,8 @@ function countdownDelay(timeLeft){
 	if(timeLeft <=0 ){
 		return;
 	}
-	countdownTimer.innerHTML = ceil(timeLeft/1000.0);
-
-
-
-	setTimeout(countdownDelay.bind(null, videoDelay), 1000);
+	countdownTimer.innerHTML = Math.ceil(timeLeft/1000.0);
+	setTimeout(countdownDelay.bind(null, timeLeft), 1000);
 }
 
 

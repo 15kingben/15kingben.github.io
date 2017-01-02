@@ -30,8 +30,28 @@ transform: rotateY(180deg);
 -moz-transform:rotateY(180deg); /* Firefox */
 }
 
+div#video-box{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
 h1#countdownTimer {
   display: none;
+  border-bottom: none;
+  position: absolute;
+  width: 170px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  z-index: 30000;
+  background-color: rgba(0,0,0,.6);
+  color: white;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 24;
+  margin: 0 0 0.8em 0;
+  padding: 0 0 0.2em 0;
 }
 
 /**************************************/
