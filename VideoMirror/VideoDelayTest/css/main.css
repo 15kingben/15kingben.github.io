@@ -24,6 +24,12 @@ button.greyedOut {
     opacity: 0.6;
 }
 
+video {
+transform: rotateY(180deg);
+-webkit-transform:rotateY(180deg); /* Safari and Chrome */
+-moz-transform:rotateY(180deg); /* Firefox */
+}
+
 /**************************************/
 body {
   font-family: sans-serif;

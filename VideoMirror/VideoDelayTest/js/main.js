@@ -29,6 +29,7 @@ videoElement.controls = false;
 //Ben's stuff
 var videoLength = 5000;
 var videoDelay = 3000;
+var hardStop = false;
 
 
 
@@ -93,6 +94,9 @@ function startRecording(stream) {
 	};
 
 	mediaRecorder.onstop = function(){
+		if(hardStop){
+			return;
+		}
 		log('Stopped  & state = ' + mediaRecorder.state);
 
 		var blob = new Blob(chunks, {type: "video/webm"});
@@ -153,7 +157,10 @@ function onBtnMirrorModeClicked(){
 	if(!videoModeButton.className.match(/(?:^|\s)greyedOut(?!\S)/) ){
 		videoModeButton.className += " greyedOut";
 
-		mediaRecorder.stop();
+		if(mediaRecorder != null){
+			hardStop = true;
+			mediaRecorder.stop();
+		}
 
 		var url = window.URL || window.webkitURL;
 		videoElement.src = url ? url.createObjectURL(stream) : stream;
