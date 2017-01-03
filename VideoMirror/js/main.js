@@ -110,7 +110,7 @@ function startRecording(stream) {
 
 		downloadLink.href = videoURL;
 		videoElement.src = videoURL;
-$("videoScreen").prop("muted", false);
+		$("videoScreen").prop("muted", false);
 		$(".downloadHeader").css("display", "block");
 		downloadList.style.display = "block";
 
