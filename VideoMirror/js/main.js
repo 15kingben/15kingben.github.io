@@ -110,7 +110,7 @@ function startRecording(stream) {
 
 		downloadLink.href = videoURL;
 		videoElement.src = videoURL;
-		$("videoScreen").prop("muted", false);
+		$("video#videoScreen").prop("muted", false);
 		$(".downloadHeader").css("display", "block");
 		downloadList.style.display = "block";
 
@@ -239,7 +239,7 @@ function enableMirroring(){
 			mediaRecorder.stop();
 		}
 	}
-	$("videoScreen").prop('muted', true);
+	$("video#videoScreen").prop('muted', true);
 
 	if (typeof MediaRecorder === 'undefined' || !navigator.getUserMedia) {
 	 alert('MediaRecorder not supported on your browser, use Firefox 30 or Chrome 49 instead.');
