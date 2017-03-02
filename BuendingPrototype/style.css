@@ -67,6 +67,14 @@ h2 a {
   padding-right: 10px;
 }
 
+.bold-text {
+  font-weight: bolder;
+}
+
+h4 {
+  font-weight: normal;
+}
+
 .machine-info {
 
   width: 30%;
