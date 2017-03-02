@@ -1,0 +1,28 @@
+Doritos,150,0g,2g,1.50
+Lays,160,0g,2g,1.50
+Snyder's Pretzels,160,2g,4g,1.50
+Cheetos,150,1g,3g,1.50
+Fritos,170,0g,2g,1.50
+Ruffles,160,0g,2g,1.50
+Smartfood,150,2g,3g,1.50
+Ritz Bitz,160,5g,2g,1.50
+Grandma's Mini Cremes,150,9g,2g,2.00
+Chex Mix,120,2g,2g,1.50
+Cheez-Its,140,0g,3g,1.50
+Baked Lays,120,2g,2g,1.50,
+Jack Links,115,3g,9g,2.00
+Reese's,210,21g,5g,1.50
+Reese's Pieces,150,16g,5g,2.00
+Nature Valley Oats,190,12g,4g,1.50
+Nature Valley Protein,190,6g,10g,1.50
+M&M's,220,28g,2g,1.50
+M&M's Peanut,220,21g,5g,1.50
+Twix,210,15g,3g,1.50
+Snickers,240,30g,4g,1.50
+Milky Way,260,35g,2g,1.50
+Skittles,170,32g,0g,1.50
+Planter's Peanuts,170,1g,8g,1.50
+Twizzlers,160,19g,1g,2.00
+Pop-Tarts,210,14g,2g,1.50
+Rice Krispies,180,15g,1g,2.00
+Trolli Gummy Worms,240,36g,2g,1.50

@@ -8,6 +8,12 @@ var sortTable = function(colindex, lastPressIndex){
 
   var A = $(a).children('td').eq(colindex).text(); //.toUpperCase();
   var B = $(b).children('td').eq(colindex).text(); //.toUpperCase();
+
+  if(colindex>0){
+    A = parseInt(A);
+    B = parseInt(B);
+  }
+
   console.log(A + " " + B);
   var rev = 1;
   if (lastPressIndex == colindex){
@@ -15,6 +21,7 @@ var sortTable = function(colindex, lastPressIndex){
   }else{
 
   }
+  console.log(rev);
 
   if(rev == 1){
     if(A < B) {

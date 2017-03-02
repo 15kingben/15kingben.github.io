@@ -19,6 +19,12 @@ body {
   background-color:#1F2739;
 }
 
+
+
+.vm-image {
+  border: 3px solid grey;
+}
+
 h1 {
   font-size:3em;
   font-weight: 300;
@@ -67,17 +73,26 @@ h2 a {
   padding-right: 10px;
 }
 
-.bold-text {
+b {
   font-weight: bolder;
 }
 
-h4 {
+.logo {
+  margin: auto;
+  width: 50%;
+  padding-bottom: 35px;
+}
+
+.vm-info td {
+  min-width: 110px;
   font-weight: normal;
+  vertical-align: top;
+  text-align: left;
 }
 
 .machine-info {
 
-  width: 30%;
+  width: 25%;
   text-align: left;
   overflow: hidden;
   padding: 0 0 8em 0;
@@ -87,7 +102,7 @@ h4 {
 .container {
 	  text-align: left;
 	  overflow: hidden;
-	  width: 60%;
+	  width: 65%;
 	  margin: 0 auto;
     margin-left: 35%;
   display: table;
