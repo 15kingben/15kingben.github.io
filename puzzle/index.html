@@ -2,10 +2,12 @@
     <style type="text/css">
         form {
             display: inline-block;
+            width: 100%;
         }
 
         span {
-            display: block;
+            display: inline-block;
+            width: 100%;
         }
 
         input.key {
@@ -13,10 +15,9 @@
             margin: auto;
             border: none;
             padding: 0;
-            /* width: 5ch; */
             float: left;
             margin-right: auto;
-            background: repeating-linear-gradient(90deg, dimgrey 0, dimgrey 1ch, transparent 0, transparent 1.5ch) 0 100%/10ch 2px no-repeat;
+            background: repeating-linear-gradient(90deg, dimgrey 0, dimgrey 1ch, transparent 0, transparent 1.5ch) 0 100%/20ch 2px no-repeat;
             font: 5ch droid sans mono, consolas, monospace;
             letter-spacing: 0.5ch;
         }
@@ -86,15 +87,34 @@
         }
     </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+
     <script>
         function checkAnswer() {
             // TODO: replace puzzle/answer.html with encrypted answer
             var v1 = document.forms["inputs"]["k1"].value;
             var v2 = document.forms["inputs"]["k2"].value;
             var v3 = document.forms["inputs"]["k3"].value;
+            var v4 = document.forms["inputs"]["k3"].value;
 
-            var concat = v1+v2+v3;
-            alert(concat);
+            var concat = v1+v2+v3+v4;
+
+            var ans = "U2FsdGVkX1997JxydY9oq8vw1peijAdI6zW2c17xYVk=";
+
+            var decrypted = CryptoJS.AES.decrypt(ans, concat);          
+            var answer;
+            try{
+                answer = decrypted.toString(CryptoJS.enc.Utf8);
+            } catch (e) {
+                answer = "";
+            }
+
+            var answer_element = document.getElementById("answer");
+            if (answer == "") {
+                answer_element.textContent = ":(";
+            } else {
+                answer_element.textContent = answer;
+            }            
         }
     </script>
 </head>
@@ -102,9 +122,20 @@
 <body>
     <form name="inputs" action="javascript:checkAnswer()">
         <!-- 1.5 ch per character -->
-        <span><input class="key" name="k1" type="text" maxlength="6" style="width:9ch" spellcheck="false" /></span>
-        <span><input class="key" name="k2" type="text" maxlength="5" style="width:7.5ch" spellcheck="false" /></span>
-        <span><input class="key" name="k3" type="text" maxlength="5" style="width:7.5ch" spellcheck="false" /></span>
-        <span><input class="button-4" id="submit" type="submit">
+        <span>
+            <input class="key" name="k1" type="text" maxlength="6" style="width:9ch" spellcheck="false" />
+        </span>
+        <span>
+            <input class="key" name="k2" type="text" maxlength="5" style="width:7.5ch" spellcheck="false" />
+        </span>
+        <span>
+            <input class="key" name="k3" type="text" maxlength="6" style="width:9ch" spellcheck="false" />
+        </span>
+        <span>
+            <input class="key" name="k4" type="text" maxlength="12" style="width:18ch" spellcheck="false" />
+        </span>
+            <input class="button-4" id="submit" type="submit">
+        </span>
     </form>
+    <p id="answer"></p>
 </body>
