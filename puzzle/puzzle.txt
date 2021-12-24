@@ -1,0 +1,66 @@
+Cast on 19 stitches
+Row 1: P1, K1, P5, K4, P8
+Row 2: K1, P1, K5, P1, K2, P1, K3, P3, K2
+Row 3: P1, K3, P3, K4, P2, K1, P3, K1, P1
+Row 4: K1, P1, K2, P1, K2, P1, K5, P1, K3, P1, K1
+Row 5: P1, K3, P3, K4, P2, K1, P3, K1, P1
+Bind off all stitches
+
+
+Cast on 53 stitches
+Row 1: P26, K1, P26
+Row 2: K25, P3, K25
+Row 3: P25, K3, P25
+Rows 4-5: Repeat rows 2-3
+Row 6: K26, P1, K26
+Row 7: P26, K1, P26
+Row 8: K25, P5, K23
+Row 9: P25, K5, P23
+Rows 10-11: Repeat rows 8-9
+Row 12: K25, P5, K23
+Row 13: P26, K1, P1, K2, P23
+Row 14: K28, P2, K23
+Row 15: P25, K5, P23
+Row 16: K25, P5, K23
+Row 17: Repeat row 15
+Row 18: K25, P4, K24
+Row 19: P25, K4, P24
+Row 20: K26, P2, K25
+Row 21: P26, K2, P25
+Rows 22-25: Repeat rows 20-21 2 times
+Row 26: K26, P1, K26
+Row 27: P26, K2, P25
+Row 28: K26, P2, K25
+Row 29: P25, K4, P24
+Row 30: K25, P7, K21
+Row 31: P13, K1, P11, K7, P21
+Row 32: K11, P4, K10, P4, K13, P2, K9
+Row 33: P2, K1, P7, K1, P1, K4, P9, K4, P12, K3, P9
+Row 34: K2, P2, K6, P1, K1, P2, K1, P2, K7, P6, K10, P3, K6, P3, K1
+Row 35: P3, K3, P3, K1, P3, K1, P1, K4, P3, K9, P3, K8, P7, K2, P2
+Row 36: K3, P4, K2, P1, K4, P1, K2, P3, K1, P4, K1, P1, K1, P4, K1, P3, K1, P4, K7, P1, K1, P1, K2
+Row 37: P5, K4, P5, K2, P2, K4, P1, K2, P1, K1, P2, K1, P1, K3, P1, K6, P6, K1, P2, K1, P2
+Row 38: K4, P1, K1, P3, K4, P1, K1, P1, K2, P6, K2, P1, K3, P7, K2, P1, K5, P2, K6
+Row 39: P4, K1, P3, K2, P2, K1, P3, K1, P1, K2, P1, K3, P2, K1, P2, K2, P2, K3, P2, K1, P1, K1, P3, K3, P2, K1, P3
+Row 40: K4, P1, K2, P5, K4, P4, K1, P4, K1, P1, K1, P2, K1, P5, K1, P2, K2, P1, K1, P3, K3, P1, K3
+Row 41: P5, K2, P1, K4, P3, K3, P1, K10, P2, K3, P2, K2, P3, K4, P8
+Row 42: K5, P1, K3, P4, K1, P2, K1, P2, K1, P2, K2, P3, K3, P3, K3, P3, K2, P3, K4, P1, K4
+Row 43: P5, K1, P3, K2, P1, K3, P3, K3, P3, K7, P1, K2, P1, K1, P2, K6, P4, K1, P4
+Row 44: K4, P2, K2, P1, K2, P4, K4, P3, K1, P2, K1, P4, K3, P3, K3, P3, K2, P1, K2, P2, K4
+Row 45: P4, K1, P1, K2, P3, K2, P1, K2, P2, K2, P1, K2, P3, K6, P1, K2, P3, K1, P1, K2, P3, K1, P7
+Row 46: K3, P1, K2, P1, K3, P1, K1, P1, K2, P2, K1, P5, K2, P2, K2, P7, K1, P1, K1, P2, K1, P1, K2, P3, K5
+Row 47: P3, K1, P1, K2, P1, K2, P3, K1, P2, K11, P3, K4, P1, K2, P2, K1, P3, K1, P2, K2, P5
+Row 48: K5, P1, K1, P2, K5, P1, K2, P3, K1, P4, K1, P1, K4, P6, K1, P1, K5, P1, K2, P1, K5
+Row 49: P2, K1, P1, K1, P1, K2, P7, K5, P1, K3, P2, K1, P2, K1, P1, K7, P7, K2, P1, K1, P4
+Row 50: K2, P2, K1, P3, K7, P2, K2, P5, K2, P1, K3, P8, K8, P4, K3
+Row 51: P2, K4, P1, K1, P7, K1, P3, K3, P1, K2, P1, K1, P1, K5, P2, K4, P9, K3, P2
+Row 52: K1, P3, K4, P1, K5, P1, K2, P3, K1, P4, K1, P6, K4, P3, K6, P1, K3, P2, K2
+Row 53: P1, K2, P5, K1, P4, K2, P1, K3, P4, K8, P6, K3, P5, K1, P4, K2, P1
+Row 54: K8, P1, K4, P4, K7, P5, K10, P2, K10, P1, K1
+Row 55: P12, K4, P9, K4, P11, K2, P2, K1, P8
+Row 56: K9, P1, K2, P3, K10, P3, K12, P3, K1, P1, K8
+Row 57: P9, K1, P1, K3, P11, K3, P13, K4, P8
+Row 58: K9, P4, K12, P3, K13, P4, K8
+Row 59: P10, K1, P31, K1, P10
+Row 60: K10, P1, K42
+Bind off all stitches
